@@ -1,14 +1,17 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TestsDotNet
+namespace TestsDotNet.Tests
 {
-    class Program
+    [TestFixture]
+    public class HeroTest
     {
-        static void Main(string[] args)
+        [Test]
+        public void TestHeroName()
         {
             Hero hero = new Hero();
             hero.Name = "Conan";
@@ -17,8 +20,7 @@ namespace TestsDotNet
 
             string name = new HeroService().GenerateHeroName(hero.Name, hero.HeroClass, hero.Level);
 
-            Console.WriteLine("Teste");
-            Console.ReadKey();
+            Assert.AreEqual("Conan Babarian #33", new HeroService().GenerateHeroName(hero.Name, hero.HeroClass, hero.Level));
         }
     }
 }
